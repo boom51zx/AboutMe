@@ -128,9 +128,9 @@ body {
 .hero-grid {
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.8fr);
-  gap: 24px;
-  align-items: stretch;
+  grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+  gap: 28px;
+  align-items: center;
 }
 
 .card {
@@ -165,11 +165,135 @@ body {
 
 .hero-card {
   min-height: 100%;
+  padding-right: 42px;
 }
 
 .status-panel {
   display: grid;
-  gap: 20px;
+  gap: 18px;
+  align-content: start;
+}
+
+.image-card {
+  position: relative;
+  min-height: 470px;
+  border-radius: 30px;
+  overflow: hidden;
+  border: 1px solid rgba(154, 221, 255, 0.14);
+  background:
+    radial-gradient(circle at top, rgba(102, 162, 255, 0.14), transparent 42%),
+    rgba(6, 11, 26, 0.28);
+  box-shadow:
+    0 12px 28px rgba(2, 5, 18, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(4px);
+}
+
+.image-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(2, 7, 20, 0.04), rgba(2, 7, 20, 0.3)),
+    linear-gradient(135deg, rgba(145, 222, 255, 0.05), transparent 30%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.image-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(160deg, rgba(18, 46, 92, 0.14), rgba(9, 17, 36, 0.05));
+  mix-blend-mode: screen;
+}
+
+.hero-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: saturate(0.92) brightness(0.88) contrast(1.02) hue-rotate(18deg);
+  transform: scale(1.03);
+}
+
+.image-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 2;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(161, 224, 255, 0.22);
+  background: rgba(8, 16, 34, 0.55);
+  color: #d7eeff;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.image-caption {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
+  z-index: 2;
+  display: grid;
+  gap: 6px;
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: rgba(5, 11, 26, 0.5);
+  border: 1px solid rgba(152, 220, 255, 0.16);
+  backdrop-filter: blur(10px);
+}
+
+.image-caption strong {
+  color: #f4f9ff;
+  font-size: 1rem;
+}
+
+.image-caption span {
+  color: #c1d7f0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.hero-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 26px 0 8px;
+}
+
+.highlight-pill {
+  display: grid;
+  gap: 6px;
+  padding: 16px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(154, 221, 255, 0.12);
+  background: rgba(11, 18, 39, 0.24);
+}
+
+.highlight-title {
+  color: #8fcfff;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.highlight-pill strong {
+  color: #f6fbff;
+  font-size: 0.98rem;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .status-card {
@@ -184,6 +308,19 @@ body {
   backdrop-filter: blur(4px);
 }
 
+.compact-card {
+  min-height: 100%;
+}
+
+.status-card strong {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 12px;
+  color: #f5f9ff;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
 .status-card::before {
   content: "";
   position: absolute;
@@ -193,7 +330,7 @@ body {
 }
 
 .status-card p {
-  margin: 10px 0 0;
+  margin: 0;
   color: #bfd3ef;
   line-height: 1.7;
 }
@@ -248,6 +385,12 @@ h2 {
   margin-bottom: 18px;
 }
 
+.maout {
+  line-height: 1.9;
+  color: #d8e7fb;
+  margin-bottom: 18px;
+}
+
 .hero-actions {
   display: flex;
   gap: 14px;
@@ -291,6 +434,18 @@ h2 {
   gap: 12px;
 }
 
+.links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+}
+
 .tag-row {
   display: flex;
   flex-wrap: wrap;
@@ -327,6 +482,19 @@ h2 {
   }
 
   .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-card {
+    padding-right: 24px;
+  }
+
+  .image-card {
+    min-height: 360px;
+  }
+
+  .hero-highlights,
+  .status-grid {
     grid-template-columns: 1fr;
   }
 
